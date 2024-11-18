@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+podman run \
+  --rm \
+  --pid host \
+  --network host \
+  -it \
+  docker.io/nicolargo/glances
