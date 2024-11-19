@@ -18,13 +18,14 @@ env:
   MY_IMAGE_DESC: "My Customized Universal Blue Image"
   IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}" # do not edit
   ARCH: x86_64
-  VERSION: main
-  VARIANT: bazzite
+  VERSION: 41
+  VARIANT: Bazzite
 
 jobs:
   build_push:
     name: Build and push image
-    runs-on: ubuntu-24.04
+    # runs-on: ubuntu-24.04
+    runs-on: gha-runner-scale-set-zoe-os-verde
 
     permissions:
       contents: read
@@ -78,6 +79,23 @@ jobs:
           done
 
           echo "alias_tags=${alias_tags[*]}" >> $GITHUB_OUTPUT
+
+      - name: Set Image Tag
+        id: set-tag
+        shell: bash
+        run: |
+          TAG="stable"
+
+          if [[ "${{ github.ref_name }}" == "testing" ]]; then
+              TAG="testing"
+          fi
+
+          # Would like to implement in the future. This will allow us to support image tags from a PR.
+          #if [[ github.event.number ]]; then
+          #  TAG="pr-${{ github.event.number }}-${{ matrix.major_version }}"
+          #fi
+
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
 
       # Build metadata
       - name: Image Metadata
@@ -160,9 +178,9 @@ jobs:
         id: build-iso
         with:
           arch: ${{ env.ARCH}}
-          image_name: ${{ steps.build_image.outputs.image }}
+          image_name: ${{ env.MY_IMAGE_NAME }}
           image_repo: "${{ steps.registry_case.outputs.lowercase }}"
-          image_tag: ${{ steps.push.outputs.digest }}
+          image_tag: ${{ steps.set-tag.outputs.tag }}
           version: ${{ env.VERSION }}
           variant: ${{ env.VARIANT }}
           iso_name: ${{ env.IMAGE_NAME }}-${{ env.IMAGE_TAG }}-${{ env.VERSION }}.iso
