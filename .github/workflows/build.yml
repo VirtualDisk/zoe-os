@@ -161,7 +161,7 @@ jobs:
         with:
           arch: ${{ env.ARCH}}
           image_name: ${{ steps.build_image.outputs.image }}
-          image_repo: "${{ steps.registry_case.outputs.lowercase }}/${{ steps.build_image.outputs.image }}"
+          image_repo: "${{ steps.registry_case.outputs.lowercase }}"
           image_tag: ${{ steps.push.outputs.digest }}
           version: ${{ env.VERSION }}
           variant: ${{ env.VARIANT }}
