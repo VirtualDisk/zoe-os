@@ -21,5 +21,5 @@ rpm-ostree install screen \
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
-systemctl enable prometheus-nvidia-exporter.socket
-systemctl enable prometheus-node-exporter.socket
+systemctl enable prometheus-nvidia-exporter.service
+systemctl enable prometheus-node-exporter.service
