@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus Node Exporter Guest Agent on Podman
+After=podman.service
+Requires=podman.service
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/podman rm --force node-exporter
+ExecStart=/usr/bin/podman run --name node-exporter --net="host" --pid="host" -v "/:/host:ro,rslave" quay.io/prometheus/node-exporter:latest --path.rootfs=/host --collector.cgroups --collector.systemd --collector.sysctl --collector.ethtool --collector.mountstats 
+ExecStop=/usr/bin/podman stop node-exporter
+Restart=always
+RestartSec=5s
+[Install]
+WantedBy=multi-user.target

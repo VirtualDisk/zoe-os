@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus Nvidia Exporter Guest Agent on Podman
+After=podman.service
+Requires=podman.service
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/podman rm --force nvidia-exporter
+ExecStart=/usr/bin/podman run -d --name nvidia-exporter --restart unless-stopped --device /dev/nvidiactl:/dev/nvidiactl --device /dev/nvidia0:/dev/nvidia0 -v /usr/lib/x86_64-linux-gnu/libnvidia-ml.so:/usr/lib/x86_64-linux-gnu/libnvidia-ml.so -v /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1:/usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1 -v /usr/bin/nvidia-smi:/usr/bin/nvidia-smi -p 9835:9835 utkuozdemir/nvidia_gpu_exporter:1.1.0
+ExecStop=/usr/bin/podman stop nvidia-exporter
+Restart=always
+RestartSec=5s
+[Install]
+WantedBy=multi-user.target
