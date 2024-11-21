@@ -24,8 +24,8 @@ env:
 jobs:
   build_push:
     name: Build and push image
-    runs-on: ubuntu-24.04
-    # runs-on: gha-runner-scale-set-zoe-os-verde
+    # runs-on: ubuntu-24.04
+    runs-on: gha-runner-scale-set-zoe-os-verde
 
     permissions:
       contents: read
@@ -41,6 +41,7 @@ jobs:
         uses: ublue-os/remove-unwanted-software@v7
 
       - name: Generate tags
+        if: always()
         id: generate-tags
         shell: bash
         run: |
