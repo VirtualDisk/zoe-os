@@ -196,10 +196,10 @@ jobs:
         id: upload-iso
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.build.outputs.iso_name }}
+          name: ${{ steps.build-iso.outputs.iso_name }}
           path: |
-            ${{ steps.build.outputs.iso_path }}
-            ${{ steps.build.outputs.iso_path }}-CHECKSUM
+            ${{ steps.build-iso.outputs.iso_path }}
+            ${{ steps.build-iso.outputs.iso_path }}-CHECKSUM
           if-no-files-found: error
           retention-days: 0
           compression-level: 0
