@@ -28,7 +28,7 @@ jobs:
     # runs-on: gha-runner-scale-set-zoe-os-verde
 
     permissions:
-      contents: read
+      contents: write
       packages: write
       id-token: write
 
@@ -37,13 +37,20 @@ jobs:
       - name: Checkout Push to Registry action
         uses: actions/checkout@v4
 
+      - name: Generate Token
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: "${{ secrets.BOT_APP_ID }}"
+          private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+
       - name: Get Current Release
         id: get_current_release
         uses: joutvhu/get-release@v1
         with:
           debug: true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: "${{ steps.app-token.outputs.token }}"
 
       - name: get hostname
         id: get-hostname
