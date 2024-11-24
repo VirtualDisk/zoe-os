@@ -5,4 +5,4 @@ sudo docker run --rm --privileged --volume ./iso-output:/build-container-install
   IMAGE_REPO=ghcr.io/virtualdisk \
   IMAGE_NAME=zoe-os \
   IMAGE_TAG=latest \
-  VARIANT=Silverblue # should match the variant your image is based on
+  VARIANT=Bazzite # should match the variant your image is based on
