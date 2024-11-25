@@ -197,6 +197,7 @@ jobs:
   build_push_iso:
     name: Build and push ISO
     runs-on: ubuntu-24.04
+    needs: build_push_container
     # runs-on: gha-runner-scale-set-zoe-os-verde
 
     permissions:
