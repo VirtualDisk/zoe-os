@@ -22,7 +22,7 @@ env:
   VARIANT: Bazzite
 
 jobs:
-  build_push:
+  build_push_container:
     name: Build and push image
     runs-on: ubuntu-24.04
     # runs-on: gha-runner-scale-set-zoe-os-verde
@@ -194,17 +194,28 @@ jobs:
           COSIGN_EXPERIMENTAL: false
           COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
 
+  build_push_iso:
+    name: Build and push ISO
+    runs-on: ubuntu-24.04
+    # runs-on: gha-runner-scale-set-zoe-os-verde
+
+    permissions:
+      contents: write
+      packages: write
+      id-token: write
+
+    steps:
       - name: Build ISO
         uses: jasonn3/build-container-installer@main
         id: build-iso
         with:
           arch: ${{ env.ARCH}}
           image_name: ${{ env.MY_IMAGE_NAME }}
-          image_repo: "${{ steps.registry_case.outputs.lowercase }}"
+          image_repo: "${{ jobs.build_push_container.steps.registry_case.outputs.lowercase }}"
           image_tag: latest
           version: ${{ env.VERSION }}
           variant: ${{ env.VARIANT }}
-          iso_name: ${{ env.MY_IMAGE_NAME }}-${{ env.VERSION}}-${{ steps.get_current_release.outputs.name }}
+          iso_name: ${{ env.MY_IMAGE_NAME }}-${{ env.VERSION}}-${{ jobs.build_push_container.steps.get_current_release.outputs.name }}
 
       # This example is for uploading your ISO as a Github artifact. You can do something similar using any cloud storage, so long as you copy the output
       - name: Upload ISO as artifact
@@ -224,7 +235,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.get_current_release.outputs.upload_url }}
+          upload_url: ${{ jobs.build_push_container.steps.get_current_release.outputs.upload_url }}
           asset_path: ${{ steps.build-iso.outputs.iso_path }}
           asset_name: ${{ steps.build-iso.outputs.iso_name }}
           asset_content_type: application/zip
