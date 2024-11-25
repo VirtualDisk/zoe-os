@@ -211,11 +211,11 @@ jobs:
         with:
           arch: ${{ env.ARCH}}
           image_name: ${{ env.MY_IMAGE_NAME }}
-          image_repo: "${{ jobs.build_push_container.steps.registry_case.outputs.lowercase }}"
+          image_repo: "${{ steps.registry_case.outputs.lowercase }}"
           image_tag: latest
           version: ${{ env.VERSION }}
           variant: ${{ env.VARIANT }}
-          iso_name: ${{ env.MY_IMAGE_NAME }}-${{ env.VERSION}}-${{ jobs.build_push_container.steps.get_current_release.outputs.name }}
+          iso_name: ${{ env.MY_IMAGE_NAME }}-${{ env.VERSION}}-${{ steps.get_current_release.outputs.name }}
 
       # This example is for uploading your ISO as a Github artifact. You can do something similar using any cloud storage, so long as you copy the output
       - name: Upload ISO as artifact
@@ -235,7 +235,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ jobs.build_push_container.steps.get_current_release.outputs.upload_url }}
+          upload_url: ${{ steps.get_current_release.outputs.upload_url }}
           asset_path: ${{ steps.build-iso.outputs.iso_path }}
           asset_name: ${{ steps.build-iso.outputs.iso_name }}
           asset_content_type: application/zip
