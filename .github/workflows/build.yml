@@ -59,7 +59,7 @@ jobs:
 
       - name: Maximize build space
         if: ${{ ! startsWith(steps.get-hostname.outputs.runner, 'gha-runner-scale-set') }}
-        uses: ublue-os/remove-unwanted-software@v7
+        uses: ublue-os/remove-unwanted-software@v8
 
       - name: Generate tags
         id: generate-tags
