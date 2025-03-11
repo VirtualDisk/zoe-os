@@ -1,0 +1,11 @@
+[Unit]
+Description=ollama on Podman
+After=podman.service
+Requires=podman.service
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/podman rm --force ollama
+ExecStart=/usr/bin/podman run --device nvidia.com/gpu=all --security-opt=label=disable -v ollama:/root/.ollama -p 11434:11434 --name ollama registry.zoe/docker.io/ollama/ollama:0.5.13
+ExecStop=/usr/bin/podman stop ollama
+Restart=always
+RestartSec=5s
