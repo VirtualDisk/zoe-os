@@ -52,3 +52,4 @@ rpm-ostree install git \
 systemctl enable podman.socket
 systemctl enable prometheus-nvidia-exporter.service
 systemctl enable prometheus-node-exporter.service
+systemctl enable invokeai.service
