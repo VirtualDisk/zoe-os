@@ -9,3 +9,5 @@ ExecStart=/usr/bin/podman run --device nvidia.com/gpu=all --name invokeai --secu
 ExecStop=/usr/bin/podman stop invokeai
 Restart=always
 RestartSec=5s
+[Install]
+WantedBy=default.target
