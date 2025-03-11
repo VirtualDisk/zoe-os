@@ -1,0 +1,11 @@
+[Unit]
+Description=localai on Podman
+After=podman.service
+Requires=podman.service
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/podman rm --force localai
+ExecStart=/usr/bin/podman run --device nvidia.com/gpu=all --name localai --security-opt=label=disable --publish 8080:8080 -v /data/localai:/build/models:cached registry.zoe/quay.io/go-skynet/local-ai:latest-aio-gpu-nvidia-cuda-12
+ExecStop=/usr/bin/podman stop localai
+Restart=always
+RestartSec=5s

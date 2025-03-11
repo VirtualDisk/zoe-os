@@ -38,11 +38,7 @@ rpm-ostree install git \
   libXcursor.x86_64 \
   libXcursor.i686 \
   libXi.x86_64 \
-  libXi.i686 \
-  cockpit-machines \
-  libvirt-client \
-  libvirt-daemon-kvm \
-  virt-install
+  libXi.i686
 
 # this would install a package from rpmfusion
 # rpm-ostree install vlc

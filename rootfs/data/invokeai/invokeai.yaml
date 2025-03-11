@@ -1,0 +1,7 @@
+# Internal metadata - do not edit:
+schema_version: 4.0.2
+
+# Put user settings here - see https://invoke-ai.github.io/InvokeAI/configuration/:
+max_cache_ram_gb: 50
+enable_partial_loading: true
+pytorch_cuda_alloc_conf: "backend:cudaMallocAsync"
