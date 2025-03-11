@@ -5,7 +5,7 @@ Requires=podman.service
 [Service]
 TimeoutStartSec=0
 ExecStartPre=-/usr/bin/podman rm --force invokeai
-ExecStart=/usr/bin/podman run --device nvidia.com/gpu=all --name invokeai --security-opt=label=disable --publish 9090:9090 registry.zoe/ghcr.io/invoke-ai/invokeai:5.8.0a2-cuda 
+ExecStart=/usr/bin/podman run --device nvidia.com/gpu=all --name invokeai --security-opt=label=disable --publish 9090:9090 -v invokeai:/invokeai registry.zoe/ghcr.io/invoke-ai/invokeai:5.8.0a2-cuda
 ExecStop=/usr/bin/podman stop invokeai
 Restart=always
 RestartSec=5s
