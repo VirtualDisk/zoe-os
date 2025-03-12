@@ -46,5 +46,6 @@ rpm-ostree install git \
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
-systemctl enable prometheus-nvidia-exporter.service
+# systemctl enable prometheus-nvidia-exporter.service
 systemctl enable prometheus-node-exporter.service
+systemctl enable beszel.service
