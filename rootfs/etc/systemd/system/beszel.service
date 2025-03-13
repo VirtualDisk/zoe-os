@@ -5,7 +5,7 @@ Requires=podman.service
 [Service]
 TimeoutStartSec=0
 ExecStartPre=-/usr/bin/podman rm --force beszel
-ExecStart=/usr/bin/podman run --name beszel --net="host" --pid="host" quay.io/henrygd/beszel-agent:v0.10.1
+ExecStart=/usr/bin/podman run --name beszel --net="host" --pid="host" quay.io/henrygd/beszel-agent:0.10.2
 ExecStop=/usr/bin/podman stop beszel
 Restart=always
 RestartSec=5s
