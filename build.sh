@@ -19,29 +19,31 @@ fc-cache -v
 rpm-ostree install screen \
   podman-docker
 
-rpm-ostree install git \
+rpm-ostree install \
+  git \
   wget \
   jq \
   cabextract \
-  vulkan-loader.x86_64 \
-  vulkan-loader.i686 \
-  pulseaudio-libs.x86_64 \
-  pulseaudio-libs.i686 \
-  freetype.x86_64 \
   freetype.i686 \
-  libXcomposite.x86_64 \
+  freetype.x86_64 \
   libXcomposite.i686 \
-  libXrandr.x86_64 \
-  libXrandr.i686 \
-  libXfixes.x86_64 \
-  libXfixes.i686 \
-  libXcursor.x86_64 \
+  libXcomposite.x86_64 \
   libXcursor.i686 \
+  libXcursor.x86_64 \
+  libXfixes.i686 \
+  libXfixes.x86_64 \
+  libXi.i686 \
   libXi.x86_64 \
-  libXi.i686
-
+  libXrandr.i686 \
+  libXrandr.x86_64 \
+  pulseaudio-libs.i686 \
+  pulseaudio-libs.x86_64 \
+  vulkan-loader.i686 \
+  vulkan-loader.x86_64
 # this would install a package from rpmfusion
 # rpm-ostree install vlc
+
+git clone https://github.com/B00merang-Project/Windows-Vista.git /usr/theme/b00merang-vista
 
 #### Example for enabling a System Unit File
 
