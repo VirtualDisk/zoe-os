@@ -47,6 +47,8 @@ git clone https://github.com/B00merang-Project/Windows-Vista.git /usr/theme/b00m
 
 #### Example for enabling a System Unit File
 
+mkdir -p /var/data/ollama
+mkdir -p /var/data/localai
 systemctl enable podman.socket
 # systemctl enable prometheus-nvidia-exporter.service
 systemctl enable prometheus-node-exporter.service
