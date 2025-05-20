@@ -5,6 +5,11 @@ on:
     - cron: "05 10 * * *" # 10:05am UTC everyday
   workflow_dispatch:
 
+  push:
+    branches: ["main"]
+    paths:
+      - .github/workflows/renovate.yaml
+
 jobs:
   run-renovate:
     name: Run Renovate
@@ -27,6 +32,7 @@ jobs:
         with:
           app-id: "${{ secrets.BOT_APP_ID }}"
           private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+          repositories: "zoe-os"
 
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v42.0.2
