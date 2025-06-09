@@ -1,0 +1,9 @@
+[Unit]
+Description=discord-boot-notifier timer
+
+[Timer]
+OnBootSec=2m
+Unit=discord-boot-notifier.service
+
+[Install]
+WantedBy=default.target
