@@ -1,0 +1,12 @@
+[Unit]
+Description=Send hostname to Discord via webhook
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/discord-hostname
+Restart=on-failure
+EnvironmentFile=/etc/secrets/discord-hostname.env
+
+[Install]
+WantedBy=multi-user.target

@@ -53,3 +53,4 @@ systemctl enable podman.socket
 # systemctl enable prometheus-nvidia-exporter.service
 systemctl enable prometheus-node-exporter.service
 systemctl enable beszel.service
+systemctl enable discord-hostname.service
