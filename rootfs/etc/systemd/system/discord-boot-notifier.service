@@ -5,8 +5,6 @@ After=network-online.target
 [Service]
 Type=simple
 ExecStart=/usr/local/bin/discord-boot-notifier
-User=root
-Group=root
 Restart=on-failure
 EnvironmentFile=/etc/secrets/discord-boot-notifier.env
 
