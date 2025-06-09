@@ -1,8 +1,3 @@
 #!/usr/bin/env bash
-DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/1381317439199121510/cLVDulHBAmOwIlalWybhFcCuRqf2AFEf4f_kXT51urLhd40BcBugo4mhyhgOJ6U31kwb"
-
-# Get the hostname of the machine
 hostname=$(hostname)
-
-# Send the message to Discord using curl
 curl -X POST -H "Content-Type: application/json" --data '{"content":"'"hi ive booted. i am ${hostname}."'","username":"BootNotifier"}' "$DISCORD_WEBHOOK_URL"
