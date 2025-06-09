@@ -4,9 +4,9 @@ After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/discord-hostname
+ExecStart=/usr/local/bin/discord-boot-notifier
 Restart=on-failure
-EnvironmentFile=/etc/secrets/discord-hostname.env
+EnvironmentFile=/etc/secrets/discord-boot-notifier.env
 
 [Install]
 WantedBy=multi-user.target

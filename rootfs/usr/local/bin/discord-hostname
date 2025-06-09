@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-hostname=$(hostname)
-curl -X POST -H "Content-Type: application/json" --data '{"content":"'"hi ive booted. i am ${hostname}."'","username":"BootNotifier"}' "$DISCORD_WEBHOOK_URL"

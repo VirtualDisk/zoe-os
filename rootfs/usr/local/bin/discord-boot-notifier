@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+hostname=$(hostname)
+fetch_data=$(neofetch)
+curl -X POST -H "Content-Type: application/json" --data '{"content":"'"hi ive booted. i am ${hostname}."\n${fetch_data}'","username":"BootNotifier"}' "$DISCORD_WEBHOOK_URL"
