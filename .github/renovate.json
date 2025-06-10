@@ -1,9 +1,10 @@
 {
   "packageRules": [
     {
-      "packageName": "bazzite",
+      "managers": ["dockerfile"],
       "fileMatch": [
-        "^Containerfile$"
+        "(^|/)Dockerfile$",
+        "(^|/)Containerfile$"
       ],
       "datasource": "docker",
       "versioning": "semver",
