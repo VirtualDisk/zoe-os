@@ -12,6 +12,15 @@
       ]
     },
     {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/ublue-os/bazzite-gnome-nvidia"],
+      "matchDepTypes": ["docker-arg"],
+      "versioning": "loose"
+    }
+  ]
+}
+
+    {
       "fileMatch": [
         ".service$"
       ],
