@@ -12,10 +12,14 @@
       ]
     },
     {
+      "managers": ["regex"],
       "fileMatch": [
-        ".service$"
+        "\\.service$"
       ],
-      "regex": "([a-z0-9]+/[a-z0-9]+):(\\\\d+\\\\.\\\\d+\\\\.\\\\d+)",
+      "matchStrings": [
+        "(?<depName>[a-z0-9]+/[a-z0-9]+):(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+      ],
+      "datasourceTemplate": "docker",
       "versioning": "semver",
       "schedule": [
         "before 9am on thursday"
