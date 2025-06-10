@@ -9,6 +9,11 @@ on:
     branches: ["main"]
     paths:
       - .github/workflows/renovate.yaml
+      - .github/renovate.json
+      - renovate.json
+      - .github/renovate.json5
+      - .github/renovate-config.js
+      - .github/renovate/**  # any file in .github/renovate/
 
 jobs:
   run-renovate:
