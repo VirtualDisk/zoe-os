@@ -15,7 +15,7 @@
       "fileMatch": [
         ".service$"
       ],
-      "regex": "([a-z0-9]+/[a-z0-9]+):(\\d+\\.\\d+\\.\\d+)",
+      "regex": "([a-z0-9]+/[a-z0-9]+):(\\\\d+\\\\.\\\\d+\\\\.\\\\d+)",
       "versioning": "semver",
       "schedule": [
         "before 9am on thursday"
