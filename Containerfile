@@ -37,7 +37,7 @@ ARG SOURCE_SUFFIX="-gnome-nvidia"
 
 ## SOURCE_TAG arg must be a version built for the specific image: eg, 39, 40, gts, latest
 # renovate: datasource=docker depName=ghcr.io/ublue-os/bazzite-gnome-nvidia
-ARG SOURCE_TAG="42.20250603"
+ARG SOURCE_TAG="42.20250620"
 
 ### 2. SOURCE IMAGE
 ## this is a standard Containerfile FROM using the build ARGs above to select the right upstream image
